@@ -208,14 +208,12 @@ module Network.Socket
     , socketPortSafe
     , socketPort
 
-#if !defined(mingw32_HOST_OS)
     -- * UNIX-domain socket
     , isUnixDomainSocketAvailable
     , socketPair
     , sendFd
     , recvFd
     , getPeerCredential
-#endif
 
     -- * Name information
     , getNameInfo
@@ -264,23 +262,21 @@ module Network.Socket
     , maxListenQueue
     ) where
 
-import Network.Socket.Buffer hiding (sendBufTo, recvBufFrom, sendBufMsg, recvBufMsg)
-import Network.Socket.Cbits
-import Network.Socket.Fcntl
-import Network.Socket.Flag
-import Network.Socket.Handle
-import Network.Socket.If
-import Network.Socket.Info
-import Network.Socket.Internal
-import Network.Socket.Name hiding (getPeerName, getSocketName)
-import Network.Socket.Options
-import Network.Socket.Shutdown
-import Network.Socket.SockAddr
-import Network.Socket.Syscall hiding (connect, bind, accept)
-import Network.Socket.Types
-#if !defined(mingw32_HOST_OS)
-import Network.Socket.Posix.Cmsg
-import Network.Socket.Unix
-#else
-import Network.Socket.Win32.Cmsg
-#endif
+import           Network.Socket.Buffer     hiding (recvBufFrom, recvBufMsg,
+                                            sendBufMsg, sendBufTo)
+import           Network.Socket.Cbits
+import           Network.Socket.Fcntl
+import           Network.Socket.Flag
+import           Network.Socket.Handle
+import           Network.Socket.If
+import           Network.Socket.Info
+import           Network.Socket.Internal
+import           Network.Socket.Name       hiding (getPeerName, getSocketName)
+import           Network.Socket.Options
+import           Network.Socket.Posix.Cmsg
+import           Network.Socket.Shutdown
+import           Network.Socket.SockAddr
+import           Network.Socket.Syscall    hiding (accept, bind, connect)
+import           Network.Socket.Types
+import           Network.Socket.Unix
+import           Network.Socket.Win32.Cmsg
