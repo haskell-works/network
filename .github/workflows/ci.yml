@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - uses: actions/setup-haskell@v1
+      - uses: haskell-works/actions/setup@main
         id: setup-haskell
         with:
           ghc-version: ${{ matrix.ghc }}
